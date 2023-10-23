@@ -14,3 +14,5 @@ For pre-training the U-Nets in music source separation, we made use of the [musd
 ```python3 preprocess_mss.py path-to-musdb18 subset```
 
 and then pre-train the U-Net with the desired source by
+
+```python3 train_separator.py path-to-musdb18 model-directory source```
