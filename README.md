@@ -5,7 +5,7 @@ Companion repository for the ICASSP-24 submission "Pre-Training Music Classifica
 ## Important note! 
 The results acquired via this repository (and reported) in FMA do not correspond to its medium subset, but to the {medium-small} one (excluding thus the small subset).
 # Architecture details
-![Screenshot](architecture_overview.pdf)
+![Screenshot](architecture_overview.png)
 The proposed architecture (depicted in the figure above) is an STFT-domain port of the TUne+ architecture. 
 # How to work with the repository
 ## a) U-Net pretraining
