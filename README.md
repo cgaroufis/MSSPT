@@ -10,5 +10,5 @@ The proposed architecture (depicted in the figure above, blue rectangle) is an S
 # How to work with the repository
 ## a) U-Net pretraining
 For pre-training the U-Nets in music source separation, we made use of the [musdb18](https://sigsep.github.io/datasets/musdb.html#sisec-2018-evaluation-campaign) dataset, which contains full audio excerpts of 150 songs, as well as separate tracks for the vocals, bass, drums, and the rest of the melodic accompaniment for each song. To perform the pre-training process, first isolate segments corresponding to specific-source tracks (for each of the training, validation and testing subsets) by
-```python3 preprocess_mss.py path-to-musdb18 subset
+```python3 preprocess_mss.py path-to-musdb18 subset```
 and then pre-train the U-Net with the desired source by
