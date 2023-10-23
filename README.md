@@ -22,3 +22,9 @@ For pre-training the U-Nets in music source separation, we made use of the [musd
 and then pre-train the U-Net with the desired source by
 
 ```python3 train_separator.py path-to-musdb18 model-directory source``` (where source can be one of bass, drums, other, vocal, or multisource)
+
+### c) Downstream classifier training
+
+In order to utilize the pre-trained separator models for downstream classification tasks, use the provided ```train_downstream.py``` script. The training process fully supports preprocessing and loading for the Magna-Tag-A-Tune and FMA datasets (you can write a similar loading + preprocessing pipeline for your own dataset). Since the proposed architecture operates on the STFT magnitude, you can acquire the STFT magnitudes of the downstream datasets by
+
+```python3 preprocess.py dataset path_to_dataset subset``` (dataset can be either 'mtat' or 'fma', subset one of train, valid, or test) 
