@@ -49,3 +49,4 @@ To evaluate an already trained model, simply use the ```evaluate.py``` script as
 
 ```python3 evaluate.py dataset path-to-dataset model-directory [--unet --skips --multisource]```, with the arguments operating similarly to the ```train_downstream.py``` script.
 
+Similar to above, you can evaluate the already uploaded downstream models (which correspond to the best of the 5 runs executed during the conducted experiment) as a starting point; for MTAT, these models (one for each source, as well as the convolutional frontend baseline and the full architecture without source separation pre-training) are located at the ```models/downstream_models/MTAT``` subdirectory; for FMA, at the ``models/downstream_models/FMA``` subdirectory.
