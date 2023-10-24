@@ -39,10 +39,13 @@ Then, to jointly finetune the pre-trained separation network along with the clas
 
 ```---skips```: if provided, ```num_of_skips``` connections are set between the U-Net and the convolutional frontend; it defaults to 5.
 
+```--multisource```: given if the pre-trained U-Net has been pre-trained with a multi-source separation objective.
+
 If you wish to skip the phase of source separation pre-training, you can use one of the pre-trained models provided at the ```models/separators``` directory of the repository as a starting point.
 
 ### d) Downstream classifier evaluation
 
-To
+To evaluate an already trained model, simply use the ```evaluate.py``` script as:
 
-```--multisource```: given if the pre-trained U-Net has been pre-trained with a multi-source separation objective.
+```python3 evaluate.py dataset path-to-dataset model-directory [--unet --skips --multisource]```, with the arguments operating similarly to the ```train_downstream.py``` script.
+
