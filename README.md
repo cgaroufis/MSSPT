@@ -21,7 +21,7 @@ For pre-training the U-Nets in music source separation, we made use of the [musd
 
 and then pre-train the U-Net with the desired source by
 
-```python3 train_separator.py path-to-musdb18 model-directory source``` (where source can be one of bass, drums, other, vocal, or multisource)
+```python3 train_separator.py path-to-musdb18 model-directory source``` (where ```source``` can be one of bass, drums, other, vocal, or multisource)
 
 ### c) Downstream classifier training
 
@@ -39,4 +39,10 @@ Then, to jointly finetune the pre-trained separation network along with the clas
 
 ```---skips```: if provided, ```num_of_skips``` connections are set between the U-Net and the convolutional frontend; it defaults to 5.
 
-```--multisource```: given if the pre-trained U-Net has been pre-trained with a multi-source separation objective.````
+If you wish to skip the phase of source separation pre-training, you can use one of the pre-trained models provided at the ```models/separators``` directory of the repository as a starting point.
+
+### d) Downstream classifier evaluation
+
+To
+
+```--multisource```: given if the pre-trained U-Net has been pre-trained with a multi-source separation objective.
