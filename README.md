@@ -52,5 +52,7 @@ Similar to above, you can evaluate the already uploaded downstream models (which
 ## References
 
 [1] Q. Kong et al., “Decoupling Magnitude and Phase Estimation with Deep Res-U-Net for Music Source Separation,” in Proc. ISMIR 2021
+
 [2] M. Won et al., "Evaluation of CNN-Based Automatic Music Tagging Models,” in Proc. SMC 2020
+
 [3] M. V asquez et al., “Tailed U-Net: Multi-Scale Music Representation Learning,” in Proc. ISMIR 2022
