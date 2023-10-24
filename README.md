@@ -27,4 +27,8 @@ and then pre-train the U-Net with the desired source by
 
 In order to utilize the pre-trained separator models for downstream classification tasks, use the provided ```train_downstream.py``` script. The training process fully supports preprocessing and loading for the Magna-Tag-A-Tune and FMA datasets (you can write a similar loading + preprocessing pipeline for your own dataset). Since the proposed architecture operates on the STFT magnitude, you can acquire the STFT magnitudes of the downstream datasets by
 
-```python3 preprocess.py dataset path_to_dataset subset``` (dataset can be either 'mtat' or 'fma', subset one of train, valid, or test) 
+```python3 preprocess.py dataset path_to_dataset subset``` (dataset can be either 'mtat' or 'fma', subset one of train, valid, or test)
+
+Then, to jointly finetune the pre-trained separation network along with the classification frontend with
+
+```python3 train_downstream.py dataset path-to-dataset model-directory [-- unet --pretrain separation-model-directory --skips --multisource] ```
