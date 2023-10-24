@@ -10,7 +10,7 @@ The proposed architecture (depicted in the figure above, blue rectangle) is an S
 ### a) Environment setup
 The code uploaded in this repository has been developed in ```python 3.9```, using ```tensorflow==2.6.0```; to setup the complete environment in order to reproduce the experiments, you can use the uploaded MSSPT.yml file:
 
-```conda create -f MSSPT.yml```
+```conda env create -f MSSPT.yml```
 
 ### b) U-Net pretraining
 For pre-training the U-Nets in music source separation, we made use of the [musdb18](https://sigsep.github.io/datasets/musdb.html#sisec-2018-evaluation-campaign) dataset, which contains full audio excerpts of 150 songs, as well as separate tracks for the vocals, bass, drums, and the rest of the melodic accompaniment for each song. To perform the pre-training process, first isolate segments corresponding to specific-source tracks (for each of the training, validation and testing subsets) by
