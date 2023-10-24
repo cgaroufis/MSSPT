@@ -29,6 +29,12 @@ In order to utilize the pre-trained separator models for downstream classificati
 
 ```python3 preprocess.py dataset path_to_dataset subset``` (dataset can be either 'mtat' or 'fma', subset one of train, valid, or test)
 
-Then, to jointly finetune the pre-trained separation network along with the classification frontend with
+Then, to jointly finetune the pre-trained separation network along with the classification frontend:
 
-```python3 train_downstream.py dataset path-to-dataset model-directory [-- unet --pretrain separation-model-directory --skips --multisource] ```
+```python3 train_downstream.py dataset path-to-dataset model-directory [-- unet --pretrain separation-model-directory --skips  num_of_skips --multisource] ``` with the optional arguments corresponding to:
+```--unet```: whether a U-Net is prepended to the convolutional frontend (included) or not (excluded)
+```--pretrain```: if provided, the U-Net is initialized according to the weights of the pre-trained separation models given; if not, the U-Net is initialized randomly.
+```---skips```: if provided, ```num_of_skips``` connections are set between the U-Net and the convolutional frontend; it defaults to 5.
+```--multisource```: given if the pre-trained U-Net has been pre-trained with a multi-source separation objective.
+
+````
