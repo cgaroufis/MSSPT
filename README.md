@@ -64,4 +64,4 @@ If you find this repository useful to your work, you can also cite the submitted
   author={Garoufis, Christos and Zlatintsi, Athanasia and Maragos, Petros},
   booktitle={arXiv preprint arXiv:2310.15845},
   year={2023}
-}```
+}
