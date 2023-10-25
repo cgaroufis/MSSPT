@@ -59,10 +59,9 @@ Similar to above, you can evaluate the already uploaded downstream models (which
 
 If you find this repository useful to your work, you can also cite the submitted work as:
 
-```
-@inproceedings{musicsourceseppretraining,
+```@inproceedings{musicsourceseppretraining,
   title={Pre-Training Music Classification Models via Music Source Separation},
   author={Garoufis, Christos and Zlatintsi, Athanasia and Maragos, Petros},
   booktitle={arXiv preprint arXiv:2310.15845},
-  year={2023},
+  year={2023}
 }```
