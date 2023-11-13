@@ -66,3 +66,8 @@ If you find this repository useful to your work, you can also cite the submitted
   booktitle={arXiv preprint arXiv:2310.15845},
   year={2023}
 }
+```
+
+## Acknowledgements
+
+This research was supported by the Hellenic Foundation for Research and Innovation (H.F.R.I.) under the “3rd Call for H.F.R.I. Research Projects to support Post-Doctoral Researchers” (Project Acronym: i-MRePlay, Project Number: 7773).
