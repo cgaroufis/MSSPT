@@ -6,7 +6,7 @@ Additional features, compared to [v1](https://github.com/cgaroufis/MSSPT/tree/v1
 - Incorporation of the AST backend, apart from convolutional ones.
 - Support for pre-training independently the backend network, or using a pre-trained set of weights for the backend for fine-tuning.
  
-Pre-initialized U-Nets, as well as backbone networks (initialized at both ImageNet-derived weights and dataset-specific ones), are made available within this repository. Code for accessing fine-tuned joint models will be made available within the next few days; in the meantime, you can access the models included in v1 from [here](https://github.com/cgaroufis/MSSPT/tree/v1).
+Pre-initialized U-Nets and backbone networks (initialized at both ImageNet-derived weights and dataset-specific ones), as well as code for accessing fine-tuned joint models will be made available within the next few days; in the meantime, you can access the models included in v1 from [here](https://github.com/cgaroufis/MSSPT/tree/v1).
 
 ## Framework details
 ![Screenshot](assets/architecture_overview2.png)
@@ -17,7 +17,7 @@ The proposed framework (depicted in the figure above for the case of a convoluti
 
 ## How to work with the repository
 ### a) Environment setup
-The code uploaded in this repository has been developed in ```python 3.9```, using ```tensorflow==2.6.0``` -- some code for the AST implementation has been adapted from [here](https://github.com/faustomorales). To setup the complete environment in order to reproduce the experiments, you can use the uploaded MSSPT.yml file:
+The code uploaded in this repository has been developed in ```python 3.9```, using ```tensorflow==2.6.0``` -- some code for the AST implementation has been adapted from [here](https://github.com/faustomorales/vit-keras). To setup the complete environment in order to reproduce the experiments, you can use the uploaded MSSPT.yml file:
 
 ```conda env create -f MSSPT.yml```
 
@@ -31,7 +31,7 @@ and then pre-train the U-Net with the desired source by
 ```python3 train_separator.py path-to-musdb18 model-directory source``` (where ```source``` can be one of bass, drums, other, vocal, or multisource)
 
 
-- ### c) Downstream classifier training
+### c) Downstream classifier training
 
 In order to utilize the pre-trained separator models for downstream classification tasks, use the provided ```train_downstream.py``` script. The training process fully supports preprocessing and loading for the Magna-Tag-A-Tune and FMA datasets, as well as GTZAN (you can write a similar loading + preprocessing pipeline for your own dataset). Since the proposed architecture operates on the STFT magnitude, you can acquire the STFT magnitudes of the downstream datasets by
 
