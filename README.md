@@ -9,7 +9,7 @@ Additional features, compared to [v1](https://github.com/cgaroufis/MSSPT/tree/v1
 Pre-initialized U-Nets, as well as backbone networks (initialized at both ImageNet-derived weights and dataset-specific ones), are made available within this repository. Code for accessing fine-tuned joint models will be made available within the next few days; in the meantime, you can access the models included in v1 from [here](https://github.com/cgaroufis/MSSPT/tree/v1).
 
 ## Framework details
-![Screenshot](assets/arch_overview2.pdf)
+![Screenshot](assets/architecture_overview2.png)
 The proposed framework (depicted in the figure above for the case of a convolutional backend, blue rectangle) is inspired by the [TUne+](https://archives.ismir.net/ismir2022/paper/000007.pdf) architecture, modified to fit a traditional supervised learning framework and adapted into the STFT domain. In essence, it consists of a U-Net network (red rectangle) followed by a classification frontend (green rectangle); the U-Net and the frontend are connected via a convolutional adaptation module (grey rectangle). 
 - The U-Net is pre-trained with various music source separation objectives, and is based on the baseline architecture described [here](https://arxiv.org/pdf/2109.05418.pdf).
 - For the classification network we experimented with both convolutional and Transformer-based backends. The convolutional frontend is a modification of the VGG-like frontend developed by [Won et al.](https://arxiv.org/pdf/2006.00751.pdf), with 2-stem convolutions at each resolution; for the Transformer case, we use the [AST](https://arxiv.org/pdf/2104.01778.pdf) backend, which follows a typical Transformer encoder architecture.
