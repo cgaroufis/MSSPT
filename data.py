@@ -5,6 +5,14 @@ import os
 import numpy as np
 import pandas as pd
 
+def get_valid_paths_gtzan(path,split):
+
+  filename_ = open(split+'_gtzan_filtered.txt')
+  pathlist = []
+  for line in filename_:
+    pathlist += [path+'/'+line[:-1]]
+  return pathlist
+
 def get_valid_paths_mtat(path,split):
   
   subfolds = {'train':['0','1','2','3','4','5','6','7','8','9','a','b'], 'valid': ['c'], 'test':['d','e','f']}
@@ -20,7 +28,7 @@ def get_valid_paths_fma(path,split):
 
   data_ = pd.read_csv(path+'/fma_metadata/tracks.csv')
   data_medium = data_.loc[data_.index[data_['set.1'] == 'medium']]
-  subsets = {'train': 'training', 'valid': 'validation', 'test':'test'}
+  subsets = {'train': 'train', 'valid': 'valid', 'test':'test'}
 
   data_sub = data_medium.loc[data_medium.index[data_medium['set'] == subsets[split]]]
   idlist = data_sub["Unnamed: 0"].tolist()
@@ -33,7 +41,24 @@ def get_valid_paths_fma(path,split):
       pathlist.append(full_name)
   
   return pathlist
-  
+
+def get_gtzan_subset(path,split):
+
+  datapath = path+'/stft_npys/'+split
+  keys_init = os.listdir(datapath)
+  numel = len(keys_init)
+  labels = np.zeros((numel,10))
+
+  labels_dict = ['blues','classical','country','disco','hiphop','jazz','metal','pop','reggae','rock']
+  labels_text = [key.split('.')[0] for key in keys_init]
+  keys = keys_init
+  for cnt,label in enumerate(labels_text):
+    label_idx = labels_dict.index(label)
+    labels[cnt,label_idx] = 1
+
+  print(np.sum(labels,axis=0))
+  return keys,labels
+
 def get_mtat_subset(path,split):
 
   datapath = path+'/stft_npys/'+split
@@ -68,9 +93,10 @@ def get_fma_subset(path,split):
   set_ = {'train': 'training', 'valid':'validation', 'test':'test'}
   datapath = path+'/stft_npys/'+split
   genre_dict = ['Electronic', 'Instrumental', 'Hip-Hop', 'Country', 'Spoken', 'Old-Time / Historic', 'Classical', 'Blues', 'International', 'Pop', 'Folk', 'Jazz', 'Experimental', 'Easy Listening', 'Rock', 'Soul-RnB']
+  #genre_dict = ['Electronic', 'Instrumental', 'Hip-Hop', 'International', 'Pop', 'Folk', 'Experimental', 'Rock']
   csv_path = path+'/fma_metadata/'
   data_ = pd.read_csv(csv_path+'/tracks.csv')
-  data_medium = data_.loc[data_.index[data_['set.1'] == 'medium']]
+  data_medium = data_.loc[data_.index[data_['set.1'] == 'small'] | data_.index[data_['set.1'] == 'medium']]
 
   dirs = os.listdir(datapath)
   numel = len(dirs)-1

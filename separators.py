@@ -64,7 +64,6 @@ def get_unisource_separator():
   x = tf.concat([x,tf.expand_dims(l,axis=-1)],axis=2)
   x = tf.squeeze(x,axis=-1) #inverse_stft_window_fn is necessary to autocalc. the correction factor
   x = tf.signal.inverse_stft(x,512,160,window_fn=tf.signal.inverse_stft_window_fn(160,forward_window_fn=tf.signal.hann_window))
-  #UNet = Model(inputs=y,outputs=x)
 
   return tf.keras.Model(inputs=y,outputs=x)
 
@@ -79,9 +78,6 @@ def get_multisource_separator():
   Nfilts = np.asarray([32,64,128,256,384,384])//2
   skips = []
 
-
-  #if td_loss:
-  
   x = Input((61792,)) #2 for stereo
   y = x
 
@@ -89,7 +85,7 @@ def get_multisource_separator():
   x = tf.signal.stft(x,512,160,window_fn=tf.signal.hann_window) #hann is the default but nevertheless.
   x = tf.expand_dims(x,axis=-1)
   l = x[:,:,-1:,:]
-  l = tf.tile(l,tf.constant([1,1,1,4]))#,[1,1,1,2]) #expand last dim per number of srcs to multiply with the src_wise mask
+  l = tf.tile(l,tf.constant([1,1,1,4])) #expand last dim per number of srcs to multiply with the src_wise mask
   z = tf.math.angle(x) #angle to get used only after src estimation
   x = tf.math.abs(x) #mag to get processed
   x = x[:,:,:-1,:]
@@ -120,7 +116,7 @@ def get_multisource_separator():
 
   x = Concatenate()([x,skips[0]])
 
-  for j in range(0,2): #additional layers?!
+  for j in range(0,2): 
     x = BatchNormalization()(x)
     x = LeakyReLU(0.01)(x)
     x = Conv2D(32,(3,3),padding='same')(x)

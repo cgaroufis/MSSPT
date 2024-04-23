@@ -102,7 +102,7 @@ for i in range(0,nSteps):
       seps[k,:,3] = b1[offset:offset+input_len]
   
     else:
-      v1 = np.load(datapath+'/'+source+'_seg_'+str(ids[4*k])+'.npy') #augmentation scheme: mix 2 vocals + 2 accompaniments, sep 2 vocals.
+      v1 = np.load(datapath+'/'+source+'_seg_'+str(ids[4*k])+'.npy') 
       v1 = (v1[:,0] + v1[:,1])/2
       v2 = np.load(datapath+'/'+source+'_seg_'+str(ids[4*k+1])+'.npy')
       v2 = (v2[:,0] + v2[:,1])/2

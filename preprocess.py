@@ -5,6 +5,7 @@
 
 import os
 import sys
+import pdb
 import numpy as np
 import pandas as pd
 import data
@@ -33,17 +34,24 @@ if dataset == 'mtat':
 elif dataset == 'fma':
   valid_paths = data.get_valid_paths_fma(datapath,subset)
   sr = 44100  
+elif dataset == 'gtzan':
+  valid_paths = data.get_valid_paths_gtzan(datapath,subset)
+  sr = 22050
 
 ct = 0
 print(len(valid_paths))
+#pdb.set_trace()
+
 for full_name in valid_paths:
   filename = full_name.split('/')[-1][:-4]
-  y,fs=librosa.load(full_name,sr=sr)
-  y = librosa.resample(y,orig_sr=fs,target_sr=16000)
-  x = tf.signal.stft(y,512,160,window_fn=tf.signal.hann_window) #hann is the default but nevertheless.
-  x = x[:,:-1]
-  x = tf.math.abs(x) #magnitude to get processed
-  dest_filename = target_dir+subset+'/'+filename+'_stft.npy'
-  np.save(dest_filename,x)
-  ct += 1
-  print(ct,'stfts saved')
+  print(filename)
+  if os.path.isfile(full_name):
+    y,fs=librosa.load(full_name,sr=sr)
+    y = librosa.resample(y,orig_sr=fs,target_sr=16000)
+    x = tf.signal.stft(y,512,160,window_fn=tf.signal.hann_window) #hann is the default but nevertheless.
+    x = x[:,:-1]
+    x = tf.math.abs(x) #magnitude to get processed
+    dest_filename = target_dir+subset+'/'+filename+'_stft.npy'
+    np.save(dest_filename,x)
+    ct += 1
+    print(ct,'stfts saved')
