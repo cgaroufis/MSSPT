@@ -5,6 +5,7 @@ This repository contains the latest version (v2) of the code to reproduce the ex
 Additional features, compared to [v1](https://github.com/cgaroufis/MSSPT/tree/v1), include:
 - Incorporation of the AST backend, apart from convolutional ones.
 - Support for pre-training independently the backend network, or using a pre-trained set of weights for the backend for fine-tuning.
+
 Finally, pre-trained weights for both standalone modules (separators and classification frontends) as well as jointly-trained networks are available [here](https://drive.google.com/drive/folders/1U4Pww0VM2iWQi9qSS8XQQie_6B9p8JmY?usp=sharing).
 
 ## Framework details
